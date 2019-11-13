@@ -1,3 +1,8 @@
+alias jl="jupyter-lab"
+alias jn="jupyter notebook"
+alias python=/usr/local/bin/python3.7
+alias pip=/usr/local/bin/pip3.7
+
 set fish_git_dirty_color red
 set fish_git_not_dirty_color green
 
