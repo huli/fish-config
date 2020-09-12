@@ -63,3 +63,5 @@ else
         start_agent
     end  
 end
+set -g fish_user_paths "/usr/local/opt/python@3.8/bin" $fish_user_paths
+export PATH="/opt/miniconda3/bin:$PATH"
