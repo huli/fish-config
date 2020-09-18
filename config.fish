@@ -18,9 +18,9 @@ end
 function fish_prompt
   set -l git_dir (git rev-parse --git-dir 2> /dev/null)
   if test -n "$git_dir"
-    printf '%s@%s %s%s%s:%s> ' (whoami) (hostname|cut -d . -f 1) (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (parse_git_branch)
+    printf 'λ %s%s%s:%s> ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal) (parse_git_branch)
   else
-    printf '%s@%s %s%s%s> ' (whoami) (hostname|cut -d . -f 1) (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
+    printf 'λ %s%s%s> ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
   end
 end
 
@@ -36,6 +36,9 @@ function start_agent
     . $SSH_ENV > /dev/null
     ssh-add
 end
+
+# Other git aliases are in git config
+alias g="git"
 
 function test_identities                                                                                                                                                                
     ssh-add -l | grep "The agent has no identities" > /dev/null
@@ -65,3 +68,9 @@ else
 end
 set -g fish_user_paths "/usr/local/opt/python@3.8/bin" $fish_user_paths
 export PATH="/opt/miniconda3/bin:$PATH"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+# <<< conda initialize <<<
+
